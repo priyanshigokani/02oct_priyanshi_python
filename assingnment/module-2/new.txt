@@ -1,0 +1,7 @@
+id:101
+name:piyu
+city:rajkot
+
+id:102
+name:priyanshi
+city:baroda
