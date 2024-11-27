@@ -1,0 +1,2 @@
+this is text file.
+we can save text file using .txt extension.
