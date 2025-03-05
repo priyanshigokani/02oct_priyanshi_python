@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>AUTHOR APPLY</title>
+    <style>
+    </style>
+</head>
+
+<body id="sin-body">
+    <div id="sin-main">
+        <h1>AUTHOR APPLY</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input class="sin-input" type="text" name="user" placeholder="Enter name" required><br>
+            <input class="sin-input" type="email" name="email" placeholder="Enter email" required><br>
+            <input class="sin-input" type="number" name="number" placeholder="Enter phone number"required><br>
+            <input class="sin-input" type="text" name="bio" placeholder="Enter bio"required><br>
+            <input id="sin-btn" type="submit" value="Apply"><br>
+        </form>
+    </div>
+</body>
+
+</html>

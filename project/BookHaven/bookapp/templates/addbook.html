@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+
+    <title>ADD BOOK</title>
+  </head>
+
+  <body id="abk-body" onload="display()">
+    <header id="head"></header>
+    <main>
+      <div class="ab-con">
+        <div class="formcon">
+          
+
+          <h2>upload book</h2>
+          <form
+            action=""
+            id="abk-form"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            {% csrf_token %}
+            <input
+              class="abk-in input"
+              type="text"
+              name="auname"
+              placeholder="Author's name"
+            />
+            <input
+              class="abk-in input"
+              type="text"
+              name="booktitle"
+              placeholder="Book Title"
+            />
+            <label class="pb-dt input" for="">publish-date</label>
+            <input
+              class="abk-dt input"
+              type="date"
+              name="pdate"
+              id="bookdate"
+              placeholder="publish-date"
+            />
+            <img src="" alt="Book image" id="book-pic" />
+            <label class="up-img input" for="input-image">Upload image</label>
+            <input
+              id="input-image"
+              name="img"
+              class="input"
+              type="file"
+              accept="image/png, image/jpeg, image/jpg"
+            />
+            <textarea
+              name="description"
+              class="input"
+              id="abk-desc"
+              cols="70"
+              rows="10"
+              placeholder="Book description"
+            ></textarea>
+            <div class="abk-geners">
+              <label for="gnr1"
+                ><input
+                  type="checkbox"
+                  id="gnr1"
+                  name="genre"
+                  value="Romance"
+                />ROMANCE</label
+              >
+              <label for="gnr2"
+                ><input
+                  type="checkbox"
+                  id="gnr2"
+                  name="genre"
+                  value="Action & Adventure"
+                />Action & Adventure</label
+              >
+              <label for="gnr3"
+                ><input
+                  type="checkbox"
+                  id="gnr3"
+                  name="genre"
+                  value="Mystery & thriller"
+                />Mystery & thriller</label
+              >
+              <label for="gnr4"
+                ><input
+                  type="checkbox"
+                  id="gnr4"
+                  name="genre"
+                  value="Biographies & history"
+                />Biographies & history</label
+              >
+              <label for="gnr5"
+                ><input
+                  type="checkbox"
+                  id="gnr5"
+                  name="genre"
+                  value="Children"
+                />Children</label
+              >
+              <label for="gnr6"
+                ><input
+                  type="checkbox"
+                  id="gnr6"
+                  name="genre"
+                  value="Young adult"
+                />Young adult</label
+              >
+              <label for="gnr7"
+                ><input
+                  type="checkbox"
+                  id="gnr7"
+                  name="genre"
+                  value="Fantasy"
+                />Fantasy</label
+              >
+              <label for="gnr8"
+                ><input
+                  type="checkbox"
+                  id="gnr8"
+                  name="genre"
+                  value="Historical fiction"
+                />Historical fiction</label
+              >
+              <label for="gnr9"
+                ><input
+                  type="checkbox"
+                  id="gnr9"
+                  name="genre"
+                  value="Horror"
+                />Horror</label
+              >
+              <label for="gnr10"
+                ><input
+                  type="checkbox"
+                  id="gnr10"
+                  name="genre"
+                  value="Literary fiction"
+                />Literary fiction</label
+              >
+              <label for="gnr11"
+                ><input
+                  type="checkbox"
+                  id="gnr11"
+                  name="genre"
+                  value="Non-fiction"
+                />Non-fiction</label
+              >
+              <label for="gnr12"
+                ><input
+                  type="checkbox"
+                  id="gnr12"
+                  name="genre"
+                  value="Science fiction"
+                />Science fiction</label
+              >
+            </div>
+            <input type="file" name="myfile" class="input" id="abk-pdf" />
+            <button class="abk-subbtn input" type="submit">Upload</button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>

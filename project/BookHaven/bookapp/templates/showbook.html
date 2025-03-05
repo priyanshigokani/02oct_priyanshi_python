@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>profile card</title>
+</head>
+
+<body>
+    <header id="hm-header">
+        <div class="navbr">
+            <nav class="nav">
+                <p class="logo-nm">
+                    Book Heaven
+                </p>
+                <div class="part2">
+                    <form  action="/" class="search-form">
+                        <input type="text" placeholder="search" class="search-input">
+                        <div class="search-button">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <i class="fa-solid fa-xmark search-close" style="position: absolute; margin-left: 0%;"></i>
+                        </div>
+                    </form>
+                    <div class="ls-btn">
+                        <input class="hm-nav-btn" type="button" value="login">
+                        <input class="hm-nav-btn" type="button" value="sign up">
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <h1>{{ selected_genre }} Books</h1>
+    <div class="bkcontainer">
+        {% for i in books %}
+        <div class="bk-card">
+            <div class="bk-card-inside">
+                <div class="bk-front">
+                    <div class="bk-front-bg">
+                        {% if i.img %}
+                        <img src="{{ i.img.url }}" alt="Book Image">
+                        {% endif %}
+                        <div class="bk-con">
+                            <h2 class="bk-name">{{ i.booktitle }}</h2>
+                            <p class="bk-auth">{{ i.auname }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bk-back">
+                    <p class="bk-desc">{{ i.description }}</p>
+                    {% if i.myfile %}
+                    <a href="{{ i.myfile.url }}" download>
+                        <button id="bk-down">Download</button>
+                    </a>
+                {% else %}
+                    <p>No file available for download.</p>
+                {% endif %}
+                
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+
+</html>

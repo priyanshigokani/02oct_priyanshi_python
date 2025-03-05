@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Mochica-logo',sans-serif;
+    src: url(/fonts/Mochica_PERSONAL_USE_ONLY.otf);
+}
+@font-face {
+    font-family: 'Poppins-Bold',sans-serif;
+    src: url(/fonts/Poppins-Bold.ttf);
+}
+@font-face {
+    font-family: 'Poppins-Regular',sans-serif;
+    src: url(/fonts/Poppins-Regular.ttf);
+}
