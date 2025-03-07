@@ -4,11 +4,23 @@ from django.core.mail import send_mail
 from BookHaven import settings
 from .models import *
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 # Create your views here.
 
 def index(request):
-    return render(request,'index.html')
+  user=request.session.get("user")
+  query = request.GET.get('query', '').strip()
+  results = Book.objects.filter(booktitle__icontains=query) if query else Book.objects.none()
+  if user:
+        try:
+            isapp = Author.objects.get(email=user)
+            approved = isapp.is_approved  # Assuming 'is_approved' is a field in Author model
+        except Author.DoesNotExist:
+            approved = False
+  else:
+        approved = False
+  return render(request,'index.html',{'user':user,'approved':approved,'query':query,'results':results})
 
 
 def addbook(request):
@@ -23,6 +35,7 @@ def addbook(request):
             
             msg = "Added book successfully!"
             print("Added book successfully!")
+            return redirect('/')
         else:
             print(newbook.errors)
             msg = "Error: Something went wrong. Please ensure all fields are filled correctly."
@@ -36,10 +49,13 @@ def log_in(request):
         password=request.POST['pas']
 
         user=signup.objects.filter(email=unm,pas=password)
+        #isapp=Author.objects.get(email=unm)
+        #print("Current User:",isapp)
         if user:
             print("Login successfully!")
+            request.session['user']=unm
             msg="Login successfully!"
-
+            return redirect('/')
         else:
             print("Login failed...")
             msg='Login failed.. Try again...'
@@ -55,13 +71,14 @@ def sign_up(request):
 
         if password != confirm_password:
             msg="Your Password doesn't match Try again..."
+            print("Your Password doesn't match Try again...")
 
         elif newuser.is_valid():
                 newuser.save()
                 
                 send_mail(
                     subject="Thankyou",
-                    message=f"Hello User! \n \n thank you for connecting with us.You have successfully signed up. \n\n Thanks & Regards! \n minji min",
+                    message=f"Hello User! \n \n thank you for connecting with us.You have successfully signed up. \n\n Thanks & Regards! \n BookHeaven",
                     from_email=settings.EMAIL_HOST_USER,
                     recipient_list=[request.POST['email']],
                 )
@@ -69,6 +86,7 @@ def sign_up(request):
 
                 msg="signup successfully! "
                 print("signup successfully!")
+                return redirect('log_in')
         else:
                 print(newuser.errors)
                 msg="Error! Somethong went wrong..."
@@ -76,28 +94,54 @@ def sign_up(request):
     return render(request,'sign_up.html',{'msg':msg})
 
 def showbook(request, genre):
+    user=request.session.get("user")
     #genre = genre.replace('_', ' ')
     #print(f"Genre received: {genre}")
     books = Book.objects.filter(genre__icontains=genre)
     print(f"Books found: {books.count()}")
-    #print(f"All genres in database: {list(all_genres)}") 
-    return render(request,'showbook.html',{"books": books, "selected_genre": genre})
-
-def search(request):
     query = request.GET.get('query', '').strip()
     results = Book.objects.filter(booktitle__icontains=query) if query else Book.objects.none()
+    #print(f"All genres in database: {list(all_genres)}") 
+    if user:
+        try:
+            isapp = Author.objects.get(email=user)
+            approved = isapp.is_approved  # Assuming 'is_approved' is a field in Author model
+        except Author.DoesNotExist:
+            approved = False
+    else:
+        approved = False
+    return render(request,'showbook.html',{"books": books,'user':user, "selected_genre": genre,'approved':approved,'query':query,'results':results})
+
+def search(request):
+    user = request.session.get("user")
     
-    return render(request,'search.html',{'query':query, 'results':results})
+    if user:
+        try:
+            isapp = Author.objects.get(email=user)
+            approved = isapp.is_approved
+        except Author.DoesNotExist:
+            approved = False
+    else:
+        approved = False
+
+    query = request.GET.get('query', '').strip()
+    print(f"Search query: {query}")  # Debugging line to check if query is received
+
+    results = Book.objects.filter(booktitle__icontains=query) if query else None
+    
+    return render(request, 'search.html', {'query': query, 'user': user, 'approved': approved, 'results': results})
+
 
 def author_apply(request):
     msg=''
+   
     if request.method == 'POST':
          au = au_ap(request.POST) 
-         if au.is_valid():  # Check if form data is valid
-            author = au.save(commit=False)  # Create author instance but don't save yet
+         if au.is_valid(): 
+            author = au.save(commit=False)  
             author.user = request.user
-            author.approval_status = 'Pending'  # Set approval status
-            author.save()  # Save to the database
+            author.approval_status = 'Pending' 
+            author.save()  
             msg='Applied successfully!'
             print('Applied successfully!')
             return redirect('/')
@@ -107,5 +151,6 @@ def author_apply(request):
             print("Error! Something went wrong...")
     return render(request,'author_apply.html',{'msg':msg})
 
-
-
+def userlogout(request):
+    logout(request)
+    return redirect('/')

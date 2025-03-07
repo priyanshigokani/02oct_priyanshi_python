@@ -1,126 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Book Heaven</title>
-    <style>
-    </style>
-</head>
+    <style></style>
+  </head>
 
-<body id="home-bg">
+  <body id="home-bg">
     <header id="hm-header">
-        <div class="navbr">
-            <nav class="nav">
-                <p class="logo-nm">
-                    BOOK HEAVEN
-                </p>
-                <div class="part2">
-                    <form   method="get" action="/search" class="search-form">
-                        <input type="text" placeholder="search" name="query" class="search-input">
-                        <div class="search-button" >
-                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                            <i class="fa-solid fa-xmark search-close" style="position: absolute; margin-left: 0%;"></i>
-                        </div>
-                    </form>
-                    <div class="ls-btn">
-                        <a href="log_in" class="hm-nav-btn" type="button" value="login">login</a>
-                        <a href="sign_up" class="hm-nav-btn" type="button" value="sign up">sign up</a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header>
-    <main id="hm-main">
-        <div class="image">
-            <p>welcome to heaven of books</p>
-            <img  width: 100vw; height: 60vh; src="/static/images/banner-image.jpg" alt="banner-image">
-        </div>
-        <div class="main-con">
-            <div class="geners">
-                
-                <div class="gener1 gnr">
-                    <a href="{% url 'showbook' 'Romance' %}" class="generlink">
-                        <p>ROMANCE</p>
-                        <img src="/static/images/Romance.webp" alt="">
-                    </a>
-                </div>
-                <div class="gener2 gnr">
-                    <a href="{% url 'showbook' 'Action & Adventure' %}" class="generlink">
-                        <p>Action & Adventure</p>
-                        <img width="250px" src="/static/images/Action-adventure.webp" alt="">
-                    </a>
-                </div>
-                <div class="gener3 gnr">
-                    <a href="{% url 'showbook' 'Mystery & Thriller' %}" class="generlink">
-                        <p>Mystery & thriller</p>
-                        <img width: 250px; src="/static/images/Mystery & thriller.webp" alt="">
-                    </a>
-                </div>
-                <div class="gener4 gnr">
-                    <a href="{% url 'showbook' 'Biographies & History' %}" class="generlink">
-                        <p>Biographies & history</p>
-                        <img width: 250px; src="/static/images/Biographies & history.webp" alt="">
-                    </a>
-                </div>
-                <div class="gener5 gnr">
-                    <a href="{% url 'showbook' 'Children' %}" class="generlink">
-                        <p>Children</p>
-                        <img width: 250px; src="/static/images/Children.webp" alt="">
-                    </a>
-                </div>
-                <div class="gener6 gnr">
-                    <a href="{% url 'showbook' 'Young_Adult' %}" class="generlink">
-                        <p>Young adult</p>
-                        <img width: 250px; src="/static/images/Young adult.webp" alt="">
-                    </a>
-                </div>
-                <div class="gener7 gnr">
-                    <a href="{% url 'showbook' 'Fantasy' %}" class="generlink">
-                        <p>Fantasy</p>
-                        <img width: 250px; src="/static/images/Fantasy.webp" alt="">
-                    </a>
-                </div>
-                <div class="gener8 gnr">
-                    <a href="{% url 'showbook' 'Historical_Fiction' %}" class="generlink">
-                        <p>Historical fiction</p>
-                        <img width: 250px; src="/static/images/Historical fiction.webp" alt="">
-                    </a>
-                </div>
-                <div class="gener9 gnr">
-                    <a href="{% url 'showbook' 'Horror' %}" class="generlink">
-                        <p>Horror</p>
-                        <img width: 250px; src="/static/images/Horror.webp" alt="">
-                    </a>
-                </div>
-                <div class="gener10 gnr">
-                    <a href="{% url 'showbook' 'Literary_Fiction' %}" class="generlink">
-                        <p>Literary fiction</p>
-                        <img width: 250px; src="/static/images/Literary fiction.webp" alt="">
-                    </a>
-                </div>
-                <div class="gener11 gnr">
-                    <a href="{% url 'showbook' 'Non-fiction' %}" class="generlink">
-                        <p>Non-fiction</p>
-                        <img width: 250px; src="/static/images/Non-fiction.webp" alt="">
-                    </a>
-                </div>
-                <div class="gener12 gnr">
-                    <a href="{% url 'showbook' 'Science_Fiction' %}" class="generlink">
-                        <p>Science fiction</p>
-                        <img width: 250px; src="/static/images/Science fiction.webp" alt="">
-                    </a>
-                </div>  
-            </div>
-        </div>
-    </main>
-<script src="/static/js/main.js"></script>
-</body>
+      <div class="navbr">
+        <nav class="nav">
+          <p class="logo-nm">BOOK HEAVEN</p>
+          <div class="part2">
+            <form method="get" action="/search" class="search-form">
+              <input
+                type="text"
+                placeholder="search"
+                name="query"
+                class="search-input"
+              />
+              <div class="search-button">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <i
+                  class="fa-solid fa-xmark search-close"
+                  style="position: absolute; margin-left: 0%"
+                ></i>
+              </div>
+            </form>
+            <div class="ls-btn">
+              {% if user is none %}
+              <a href="/log_in" class="hm-nav-btn" type="button" value="login"
+                >login</a
+              >
+              <a href="/sign_up" class="hm-nav-btn" type="button" value="sign up"
+                >sign up</a
+              >
+              {% else %} {% if approved %}
+              <a href="/addbook" class="hm-nav-btn" type="button">Add Book</a>
+              {% else %}
+              <a href="/author_apply" class="hm-nav-btn" type="button"
+                >Apply Author</a
+              >
+              {% endif %}
 
+              <a href="/logout" class="hm-nav-btn" type="button" value="sign up"
+                >Logout</a
+              >
+              {% endif %}
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    
+    <main id="hm-main">
+      <div class="image">
+        <p>welcome to heaven of books</p>
+        <img width: 100vw; height: 60vh; src="/static/images/banner-image.jpg"
+        alt="banner-image">
+      </div>
+      <div class="main-con">
+        <div class="geners">
+          <div class="gener1 gnr">
+            <a href="{% url 'showbook' 'Romance' %}" class="generlink">
+              <p>ROMANCE</p>
+              <img src="/static/images/Romance.webp" alt="" />
+            </a>
+          </div>
+          <div class="gener2 gnr">
+            <a
+              href="{% url 'showbook' 'Action & Adventure' %}"
+              class="generlink"
+            >
+              <p>Action & Adventure</p>
+              <img
+                width="250px"
+                src="/static/images/Action-adventure.webp"
+                alt=""
+              />
+            </a>
+          </div>
+          <div class="gener3 gnr">
+            <a
+              href="{% url 'showbook' 'Mystery & Thriller' %}"
+              class="generlink"
+            >
+              <p>Mystery & thriller</p>
+              <img width: 250px; src="/static/images/Mystery & thriller.webp"
+              alt="">
+            </a>
+          </div>
+          <div class="gener4 gnr">
+            <a
+              href="{% url 'showbook' 'Biographies & History' %}"
+              class="generlink"
+            >
+              <p>Biographies & history</p>
+              <img width: 250px; src="/static/images/Biographies & history.webp"
+              alt="">
+            </a>
+          </div>
+          <div class="gener5 gnr">
+            <a href="{% url 'showbook' 'Children' %}" class="generlink">
+              <p>Children</p>
+              <img width: 250px; src="/static/images/Children.webp" alt="">
+            </a>
+          </div>
+          <div class="gener6 gnr">
+            <a href="{% url 'showbook' 'Young Adult' %}" class="generlink">
+              <p>Young adult</p>
+              <img width: 250px; src="/static/images/Young adult.webp" alt="">
+            </a>
+          </div>
+          <div class="gener7 gnr">
+            <a href="{% url 'showbook' 'Fantasy' %}" class="generlink">
+              <p>Fantasy</p>
+              <img width: 250px; src="/static/images/Fantasy.webp" alt="">
+            </a>
+          </div>
+          <div class="gener8 gnr">
+            <a
+              href="{% url 'showbook' 'Historical Fiction' %}"
+              class="generlink"
+            >
+              <p>Historical fiction</p>
+              <img width: 250px; src="/static/images/Historical fiction.webp"
+              alt="">
+            </a>
+          </div>
+          <div class="gener9 gnr">
+            <a href="{% url 'showbook' 'Horror' %}" class="generlink">
+              <p>Horror</p>
+              <img width: 250px; src="/static/images/Horror.webp" alt="">
+            </a>
+          </div>
+          <div class="gener10 gnr">
+            <a href="{% url 'showbook' 'Literary Fiction' %}" class="generlink">
+              <p>Literary fiction</p>
+              <img width: 250px; src="/static/images/Literary fiction.webp"
+              alt="">
+            </a>
+          </div>
+          <div class="gener11 gnr">
+            <a href="{% url 'showbook' 'Non-fiction' %}" class="generlink">
+              <p>Non-fiction</p>
+              <img width: 250px; src="/static/images/Non-fiction.webp" alt="">
+            </a>
+          </div>
+          <div class="gener12 gnr">
+            <a href="{% url 'showbook' 'Science Fiction' %}" class="generlink">
+              <p>Science fiction</p>
+              <img width: 250px; src="/static/images/Science fiction.webp"
+              alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/static/js/main.js"></script>
+  </body>
 </html>

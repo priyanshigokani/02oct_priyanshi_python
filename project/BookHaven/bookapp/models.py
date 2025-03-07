@@ -16,7 +16,7 @@ class Author(models.Model):
         ('Rejected', 'Rejected'),
     ]
 
-    user = models.CharField(max_length=20)  # Link to CustomUser
+    name = models.CharField(max_length=20)  # Link to CustomUser
     email=models.EmailField()
     number=models.BigIntegerField()
     bio=models.TextField()

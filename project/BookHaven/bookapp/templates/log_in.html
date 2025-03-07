@@ -13,7 +13,7 @@
 <body id="lin-body">
     <div id="lin-main">
         <H1>LOGIN</H1>
-        <form id="lin-frm" action="submit" method="post">
+        <form id="lin-frm" action="" method="post">
             {% csrf_token %}
             <input class="lin-input" type="email" name="email" placeholder="Enter email" required><br>
             <input class="lin-input" type="password" name="pas" placeholder="Password" required><br>
@@ -25,7 +25,7 @@
             <a class="lin-links" href="/" style="margin-left: 40px;">Forgot Password?</a><br>
             <input id="lin-btn" type="submit" value="Login"><br>
             <label>Don't Have an account?</label>
-            <a class="lin-links" href="/sign_up.html">Sign Up</a>
+            <a class="lin-links" href="/sign_up">Sign Up</a>
         </form>
     </div>
 </body>

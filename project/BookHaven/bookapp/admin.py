@@ -10,7 +10,7 @@ class bookdata(admin.ModelAdmin):
 admin.site.register(Book,bookdata)
 
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('user', 'email', 'is_approved')  # Show columns in admin
+    list_display = ('name', 'email', 'is_approved')  # Show columns in admin
     list_filter = ('is_approved',)  # Add filter for approval
     actions = ['approve_authors', 'reject_authors']  # Custom actions
 

@@ -14,8 +14,9 @@
     <div id="sin-main">
         <h1>AUTHOR APPLY</h1>
         <form method="post">
+            
             {% csrf_token %}
-            <input class="sin-input" type="text" name="user" placeholder="Enter name" required><br>
+            <input class="sin-input" type="text" name="name" placeholder="Enter name" required><br>
             <input class="sin-input" type="email" name="email" placeholder="Enter email" required><br>
             <input class="sin-input" type="number" name="number" placeholder="Enter phone number"required><br>
             <input class="sin-input" type="text" name="bio" placeholder="Enter bio"required><br>

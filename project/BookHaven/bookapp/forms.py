@@ -17,4 +17,4 @@ class adddbookform(forms.ModelForm):
 class au_ap(forms.ModelForm):
     class Meta:
         model=Author
-        fields=['user','email','number','bio']
+        fields=['name','email','number','bio']
